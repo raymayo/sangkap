@@ -15,19 +15,19 @@ const SearchSuggestion = () => {
 		fetch('/ingredients.txt')
 			.then((res) => res.text())
 			.then((text) => {
-				const suggestionArray = text.split('\n').filter(Boolean);
+				const suggestionArray = text.split(/\r?\n/).filter(Boolean);
 				setIngrSuggestion(suggestionArray);
+				console.log(ingrSuggestion);
 			})
 			.catch((err) => console.error('Error fetching suggestions:', err));
 	}, []);
 
-	console.log(filteredIngr);
 
 	const onIngrType = (e) => {
 		const input = e.target.value;
 		setUserInput(input);
 
-		const filterSuggestions = ingrSuggestion
+		const filterSuggestions = input.toLowerCase() !== '' ? ingrSuggestion
 			.filter((suggestion) =>
 				suggestion.toLowerCase().includes(input.toLowerCase())
 			)
@@ -35,7 +35,7 @@ const SearchSuggestion = () => {
 				(a, b) =>
 					a.toLowerCase().indexOf(input.toLowerCase()) -
 					b.toLowerCase().indexOf(input.toLowerCase())
-			);
+			) : [];
 
 		setFilterIngr(filterSuggestions);
 	};
@@ -44,8 +44,7 @@ const SearchSuggestion = () => {
 		if (ingredientArray.includes(e.target.textContent)) {
 			return;
 		}
-		setIngredientArray([...ingredientArray, e.target.textContent]);
-		setUserInput('');
+		setIngredientArray([...ingredientArray,e.target.textContent]);
 	};
 
 	const searchRecipe = () => {
@@ -63,14 +62,9 @@ const SearchSuggestion = () => {
 
 	return (
 		<>
-			<div>
+			<div className="container">
 				<div id="recipeSearchBox">
-					{ingredientArray.map((item, index) => (
-						<span className="itemEntered" key={index}>
-							{item}
-							<button onClick={deleteItemOnArray}>x</button>
-						</span>
-					))}
+					<div className="searchInput">
 					<input
 						id="recipeSearchInput"
 						type="text"
@@ -79,18 +73,26 @@ const SearchSuggestion = () => {
 						placeholder="Add An Ingredient"
 					/>
 					<button onClick={searchRecipe}>Search</button>
-				</div>
-				<div className="suggestionBox">
-					{filteredIngr.map((suggestion, index) => (
-						<span key={index} onClick={getSelectedIngr}>
-							{suggestion}
+					</div>
+					<div className="suggestionBox">
+					<div className="selectedItems">
+					{ingredientArray.map((item, index) => (
+						<span className="itemEntered" key={index}>
+							{item}
+							<button onClick={deleteItemOnArray}>x</button>
 						</span>
 					))}
+					</div>
+					{filteredIngr.map((suggestion, index) => (
+						<span key={index} onClick={getSelectedIngr} className='suggestion'>{suggestion}</span>
+					))}
 				</div>
+				</div>
+				
 				<p>ingredient array: {ingredientArray}</p>
 				<p>ingredient query: {ingredientQuery}</p>
-			</div>
 			<RecipeSearch searchQuery={ingredientQuery} />
+			</div>
 		</>
 	);
 };

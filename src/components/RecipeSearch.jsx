@@ -84,7 +84,7 @@ const RecipeSearch = (recipe) => {
   }, []); // Empty dependency array to ensure the effect runs only once on component mount
 
   return (
-    <div className="container">
+    <div>
       {/* {recipeData.map((recipe, index) => (
         <div className="recipeCard" key={index}>
           <img className="recipeImage" src={recipe.image} alt={recipe.title} />
