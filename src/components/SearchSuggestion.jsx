@@ -136,15 +136,15 @@ const SearchSuggestion = () => {
 					<div className="searchInput rounded">
 						<input
 							id="recipeSearchInput"
-							className="p-2 shadow-sm rounded-l"
+							className="p-2 shadow-sm rounded-l border-b"
 							type="text"
 							value={userInput}
 							onChange={onIngrType}
-							placeholder="Add An Ingredient"
+							placeholder="Add Ingredients"
 						/>
 						<button
 							onClick={searchRecipe}
-							className="bg-yellow-500 text-black border-l-0 p-2 rounded-r shadow-sm">
+							className="bg-yellow-500 text-black border-l-0 p-2 rounded-r shadow">
 							Search
 						</button>
 					</div>
@@ -169,17 +169,13 @@ const SearchSuggestion = () => {
 						</div>
 					)}
 				</div>
-
-				{/* <p>ingredient array: {ingredientArray}</p>
-				<p>ingredient query: {ingredientArray.join(',')}</p>
-				<RecipeSearch searchQuery={ingredientArray.join(',')} /> */}
 			</div>
 			<div
 				id="recipeBox"
-				className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-6 items-start justify-center mx-8 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-48">
+				className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-6 items-start justify-center mx-8 sm:mx-8 md:mx-8 lg:mx-24 xl:mx-48">
 				{displayProto}
 			</div>
-			{!userInput && (
+			{displayProto.length === 0 && (
 				<div
 					className="flex flex-col items-center gap-6 lg:w-2/4 mx-6 lg:mx-6"
 					id="descBox">
