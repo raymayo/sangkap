@@ -58,11 +58,12 @@ const SearchSuggestion = () => {
 		const selectedIngredient = e.target.textContent;
 		if (!ingredientArray.includes(selectedIngredient)) {
 			setIngredientArray([...ingredientArray, selectedIngredient]);
+			setUserInput('');
 		}
 	};
 
 	const searchRecipe = async () => {
-		const ingredientQuery = ingredientArray;
+		const ingredientQuery = ingredientArray; // Assuming ingredientArray is defined somewhere
 
 		try {
 			const response = await fetch(API_RECIPES_URL);
@@ -78,14 +79,18 @@ const SearchSuggestion = () => {
 		}
 
 		const foundRecipes = recipe.filter((e) =>
-			e.ingredients.some((ingredient) => ingredient.includes(ingredientQuery))
+			ingredientQuery.every((query) =>
+				e.ingredients.some((ingredient) => ingredient.includes(query))
+			)
 		);
 
 		if (foundRecipes.length > 0) {
 			// Update state once after the loop is done
 			setDisplayRecipe(foundRecipes);
+			console.log(ingredientQuery);
 		} else {
-			console.log('No recipes found with the specified ingredient.');
+			console.log('No recipes found with the specified ingredients.');
+			console.log(ingredientQuery);
 		}
 	};
 
@@ -123,7 +128,7 @@ const SearchSuggestion = () => {
 
 	return (
 		<>
-			<h1 className="pt-10 text-7xl">
+			<h1 className="pt-10 text-5xl sm:text-6xl md:text-7xl lg:text-7xl">
 				Plate<span className="font-bold text-yellow-500">Mate</span>
 			</h1>
 			<div className="container mb-8 rounded">
@@ -143,16 +148,16 @@ const SearchSuggestion = () => {
 							Search
 						</button>
 					</div>
-					{userInput && ( // Check if there is any input
+					<div className="selectedItems rounded shadow bg-white">
+						{ingredientArray.map((item, index) => (
+							<span className="itemEntered" key={index}>
+								{item}
+								<button onClick={deleteItemOnArray}>x</button>
+							</span>
+						))}
+					</div>
+					{userInput && (
 						<div className="suggestionBox rounded shadow bg-white">
-							<div className="selectedItems">
-								{ingredientArray.map((item, index) => (
-									<span className="itemEntered" key={index}>
-										{item}
-										<button onClick={deleteItemOnArray}>x</button>
-									</span>
-								))}
-							</div>
 							{filteredIngr.map((suggestion, index) => (
 								<span
 									key={index}
