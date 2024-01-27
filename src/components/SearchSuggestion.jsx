@@ -105,14 +105,17 @@ const SearchSuggestion = () => {
 	const displayProto = displayRecipe.map((recipeObj, index) => (
 		<div
 			key={index}
-			className="w-full h-full border border-solid border-gray-300 rounded-md shadow-sm bg-white">
+			className="w-full h-full border border-solid border-gray-300 rounded-xl shadow-sm bg-white cursor-pointer">
 			<img
 				src={recipeObj.image}
 				alt=""
 				className="w-full h-64 object-cover rounded-t-md"
 			/>
-			<div className="p-4">
-				<h1 className="text-xl font-bold">{recipeObj.title}</h1>
+			<div className="p-4 flex gap-1 flex-col">
+				<h1 className="text-2xl font-bold">{recipeObj.title}</h1>
+				<p className="mealTag text-base border self-start px-1.5 py-.5 rounded-xl">
+					{recipeObj.meal}
+				</p>
 				<p>{recipeObj.summary}</p>
 			</div>
 		</div>
@@ -120,12 +123,15 @@ const SearchSuggestion = () => {
 
 	return (
 		<>
-			<div className="container m-8">
-				<div id="recipeSearchBox">
-					<div className="searchInput">
+			<h1 className="pt-10 text-7xl">
+				Plate<span className="font-bold text-yellow-500">Mate</span>
+			</h1>
+			<div className="container mb-8 rounded">
+				<div id="recipeSearchBox" className="rounded p-8">
+					<div className="searchInput rounded">
 						<input
 							id="recipeSearchInput"
-							className="p-2 border border-solid border-black rounded-tl"
+							className="p-2 shadow-sm rounded-l"
 							type="text"
 							value={userInput}
 							onChange={onIngrType}
@@ -133,28 +139,30 @@ const SearchSuggestion = () => {
 						/>
 						<button
 							onClick={searchRecipe}
-							className="bg-black text-white p-2 rounded-tr">
+							className="bg-yellow-500 text-black border-l-0 p-2 rounded-r shadow-sm">
 							Search
 						</button>
 					</div>
-					<div className="suggestionBox border border-solid border-black border-t-0">
-						<div className="selectedItems">
-							{ingredientArray.map((item, index) => (
-								<span className="itemEntered" key={index}>
-									{item}
-									<button onClick={deleteItemOnArray}>x</button>
+					{userInput && ( // Check if there is any input
+						<div className="suggestionBox rounded shadow bg-white">
+							<div className="selectedItems">
+								{ingredientArray.map((item, index) => (
+									<span className="itemEntered" key={index}>
+										{item}
+										<button onClick={deleteItemOnArray}>x</button>
+									</span>
+								))}
+							</div>
+							{filteredIngr.map((suggestion, index) => (
+								<span
+									key={index}
+									onClick={getSelectedIngr}
+									className="suggestion">
+									{suggestion}
 								</span>
 							))}
 						</div>
-						{filteredIngr.map((suggestion, index) => (
-							<span
-								key={index}
-								onClick={getSelectedIngr}
-								className="suggestion">
-								{suggestion}
-							</span>
-						))}
-					</div>
+					)}
 				</div>
 
 				{/* <p>ingredient array: {ingredientArray}</p>
@@ -163,9 +171,46 @@ const SearchSuggestion = () => {
 			</div>
 			<div
 				id="recipeBox"
-				className="grid grid-cols-4 gap-8 items-start justify-center m-8">
+				className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-6 items-start justify-center mx-8 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-48">
 				{displayProto}
 			</div>
+			{!userInput && (
+				<div
+					className="flex flex-col items-center gap-6 lg:w-2/4 mx-6 lg:mx-6"
+					id="descBox">
+					<div className="desc p-4 rounded-md bg-white shadow">
+						<h1 className="text-2xl font-bold">What is PlateMate?</h1>
+						<p>
+							PlateMate is a free web application designed to provide
+							personalized recipe recommendations based on the ingredients you
+							currently have at home. The app aims to simplify meal planning and
+							cooking by offering creative and delicious recipes that match the
+							ingredients in your kitchen.
+						</p>
+					</div>
+					<div className="desc p-4 rounded-md bg-white shadow">
+						<h1 className="text-2xl font-bold">Features</h1>
+						<p>
+							PlateMate offers a seamless cooking experience through features
+							such as user accounts, ingredient inventory management, search and
+							filter options, detailed recipe information, save and share
+							functionalities, shopping list integration, and a responsive
+							design for user-friendly accessibility across devices.
+						</p>
+					</div>
+					<div className="desc p-4 rounded-md bg-white shadow">
+						<h1 className="text-2xl font-bold">Why can use PlateMate?</h1>
+						<p>
+							PlateMate is your ultimate app for those moments when you&apos;re
+							indecisive about what to eat or working with a limited supply of
+							ingredients! Bursting with enthusiasm, PlateMate turns every
+							mealtime dilemma into a culinary adventure. Whether you&apos;re a
+							cooking pro or facing kitchen uncertainties, let PlateMate guide
+							you to delicious and creative solutions
+						</p>
+					</div>
+				</div>
+			)}
 		</>
 	);
 };

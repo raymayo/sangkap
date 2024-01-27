@@ -67,7 +67,7 @@ body {
 }
 
 .container {
-  width: min(100%, 600px);
+  width: min(100%, 700px);
   height: 100%;
 }
 
@@ -81,7 +81,6 @@ body {
 
 #recipeSearchBox {
   width: 100%;
-  background-color: #fff;
 }
 
 .searchInput {
@@ -109,19 +108,27 @@ body {
 
 .itemEntered {
   padding: .3em;
-  border: solid 1px black;
+  border: solid 1px #F59E0C;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: .2em;
   border-radius: .3em;
   margin: .4em;
+  background-color: rgba(245, 158, 12, 0.2);
+  color: #F59E0C;
+}
+
+.mealTag {
+  background-color: rgba(245, 158, 12, 0.2);
+  border: solid 1px #F59E0C;
+  color: #F59E0C;
 }
 
 
 .itemEntered button {
   padding: 0 .1em;
-  color: red;
+  color: #F59E0C;
   font-weight: bold;
   font-size: 1em;
   background: none;
@@ -148,8 +155,8 @@ body {
 }
 
 .suggestion:hover {
-  background-color: black;
-  color: white;
+  background-color: rgba(245, 158, 12, 0.6);
+  color: black;
 }
 
 .suggestion {
@@ -190,6 +197,17 @@ textarea {
 .selectedItems {
   display: flex;
 
+}
+
+
+/* .desc {
+  background-color: rgba(215, 140, 9, 0.2);
+  color: #F59E0C;
+  border: solid 1px #F59E0C;
+} */
+
+.desc h1 {
+  color: #F59E0C;
 }
 
 @media screen and (max-width: 650px) {
