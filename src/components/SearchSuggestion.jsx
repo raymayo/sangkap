@@ -13,6 +13,8 @@ const SearchSuggestion = () => {
 	const [filteredIngr, setFilteredIngr] = useState([]);
 	const [ingredientArray, setIngredientArray] = useState([]);
 
+	const [displayRecipe, setDisplayRecipe] = useState([]);
+
 	let recipe;
 
 	useEffect(() => {
@@ -71,25 +73,26 @@ const SearchSuggestion = () => {
 
 			const result = await response.json();
 			recipe = result;
-			// console.log(result);
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
 
-		// console.log(ingredientQuery);
-		// console.log(recipe);
 		const foundRecipes = recipe.filter((e) =>
 			e.ingredients.some((ingredient) => ingredient.includes(ingredientQuery))
 		);
 
 		if (foundRecipes.length > 0) {
-			foundRecipes.forEach((foundRecipe) => {
-				console.log(foundRecipe);
-			});
+			// Update state once after the loop is done
+			setDisplayRecipe(foundRecipes);
 		} else {
 			console.log('No recipes found with the specified ingredient.');
 		}
 	};
+
+	// Use useEffect to log updated state after the component has re-rendered
+	useEffect(() => {
+		console.log(displayRecipe);
+	}, [displayRecipe]);
 
 	const deleteItemOnArray = (e) => {
 		let removedItem = e.target.parentElement.textContent.slice(0, -1);
@@ -99,21 +102,42 @@ const SearchSuggestion = () => {
 		setIngredientArray(modifiedArray);
 	};
 
+	const displayProto = displayRecipe.map((recipeObj, index) => (
+		<div
+			key={index}
+			className="w-full h-full border border-solid border-gray-300 rounded-md shadow-sm bg-white">
+			<img
+				src={recipeObj.image}
+				alt=""
+				className="w-full h-64 object-cover rounded-t-md"
+			/>
+			<div className="p-4">
+				<h1 className="text-xl font-bold">{recipeObj.title}</h1>
+				<p>{recipeObj.summary}</p>
+			</div>
+		</div>
+	));
+
 	return (
 		<>
-			<div className="container">
+			<div className="container m-8">
 				<div id="recipeSearchBox">
 					<div className="searchInput">
 						<input
 							id="recipeSearchInput"
+							className="p-2 border border-solid border-black rounded-tl"
 							type="text"
 							value={userInput}
 							onChange={onIngrType}
 							placeholder="Add An Ingredient"
 						/>
-						<button onClick={searchRecipe}>Search</button>
+						<button
+							onClick={searchRecipe}
+							className="bg-black text-white p-2 rounded-tr">
+							Search
+						</button>
 					</div>
-					<div className="suggestionBox">
+					<div className="suggestionBox border border-solid border-black border-t-0">
 						<div className="selectedItems">
 							{ingredientArray.map((item, index) => (
 								<span className="itemEntered" key={index}>
@@ -133,16 +157,14 @@ const SearchSuggestion = () => {
 					</div>
 				</div>
 
-				<p>ingredient array: {ingredientArray}</p>
+				{/* <p>ingredient array: {ingredientArray}</p>
 				<p>ingredient query: {ingredientArray.join(',')}</p>
-				<RecipeSearch searchQuery={ingredientArray.join(',')} />
+				<RecipeSearch searchQuery={ingredientArray.join(',')} /> */}
 			</div>
-			<div id="recipeBox">
-				{foundRecipe.map(([key, value]) => (
-					<div key={key}>
-						{key}: {value}
-					</div>
-				))}
+			<div
+				id="recipeBox"
+				className="grid grid-cols-4 gap-8 items-start justify-center m-8">
+				{displayProto}
 			</div>
 		</>
 	);

@@ -42,103 +42,59 @@
   color: #888;
 } */
 
-:root{
-  --accent:#f45300;
-  --black:#121212;
-  --white:#e8eae8;
+:root {
+  --accent: #f45300;
+  --black: #121212;
+  --white: #e8eae8;
 }
 
-*{
+#root {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
   background-color: var(--white);
 }
 
-.container{
-  /* background: salmon; */
-  /* margin: .5em auto; */
-  width: 100%;
+.container {
+  width: min(100%, 600px);
   height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  /* gap: 1.6em; */
-}
-
-.recipeCard{
-  border-radius: .5em;
-  width:350px;
-  display: flex;
-  flex-direction: column;
-  color: var(--black);
-  background-color: #fff;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-.recipeImage{
-  width: auto;
-  height: 150px;
-  object-fit: cover;
-  border-radius: .5em 0 0 .5em ;
-}
-
-.recipeCard h1{
- font-size: 1.6em;
-}
-
-.recipeInfoBox{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 1em;
-  gap: 10px;
 }
 
 
-.recipeInfo{
-  /* background-color: black; */
-  padding: 5px 10px;
-  border-radius: 50px;
-  color: #fff;
-  background-color: var(--accent);
-  font-size: .9em;
-}
 
 
-.tags{
+.tags {
   display: flex;
   gap: .5em;
 }
 
-#recipeSearchBox{
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: min(100%,600px);
-  background-color: #fff;
-  gap: .25em;
-  /* flex-wrap: wrap; */
-}
-
-.searchInput{
-  display: flex;
-}
-
-
-#recipeSearchInput{
-  font-size: 1em;
+#recipeSearchBox {
   width: 100%;
   background-color: #fff;
-  border: none;
 }
 
-#recipeSearchBtn{
+.searchInput {
+  display: flex;
+}
+
+
+#recipeSearchInput {
+  font-size: 1em;
+  width: 100%;
+}
+
+#recipeSearchBtn {
   padding: .5em .8em;
   border-radius: 0 .5em .5em 0;
   cursor: pointer;
@@ -150,12 +106,8 @@ body{
   color: var(--black);
 }
 
-/* .searchBox{
-  display: flex;
-  gap: .2em;
-} */
 
-.itemEntered{
+.itemEntered {
   padding: .3em;
   border: solid 1px black;
   display: flex;
@@ -166,11 +118,8 @@ body{
   margin: .4em;
 }
 
-.itemEntered *{
-  /* border: solid 1px red; */
-}
 
-.itemEntered button{
+.itemEntered button {
   padding: 0 .1em;
   color: red;
   font-weight: bold;
@@ -180,35 +129,34 @@ body{
   cursor: pointer;
 }
 
-.suggestionBox{
-  border: solid 1px black;
+.suggestionBox {
   border-radius: 0 0 10px 10px;
   max-height: 200px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.suggestionBox::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
+.suggestionBox::-webkit-scrollbar {
+  display: none;
 }
 
-.suggestionBox span{
+.suggestionBox span {
   cursor: pointer;
 }
 
-.suggestion:hover{
+.suggestion:hover {
   background-color: black;
   color: white;
 }
 
-.suggestion{
+.suggestion {
   padding-left: 1em;
 }
 
-header{
+header {
   width: 100%;
   background-color: var(--accent);
   display: flex;
@@ -222,33 +170,34 @@ header{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.icon{
+.icon {
   display: flex;
   align-items: center;
   color: #fff
 }
 
-#logo{
+#logo {
   color: #fff;
 }
 
-input[type="text"], input[type="password"], textarea {
-  border: none;
+input[type="text"],
+input[type="password"],
+textarea {
+  /* border: none; */
   outline: none;
-  border-bottom: 1px solid #ccc; /* You can adjust the color and thickness of the outline */
 }
 
-.selectedItems{
+.selectedItems {
   display: flex;
-  /* gap: .5em; */
+
 }
 
 @media screen and (max-width: 650px) {
-  .recipeCard{
+  .recipeCard {
     flex-direction: column;
   }
 
-  .recipeImage{
+  .recipeImage {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -256,7 +205,7 @@ input[type="text"], input[type="password"], textarea {
     border-right: none;
   }
 
-  .icon h1{
+  .icon h1 {
     display: none;
   }
 
