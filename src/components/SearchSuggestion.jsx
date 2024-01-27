@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import RecipeSearch from './RecipeSearch.jsx';
 
 const API_INGREDIENTS_URL =
@@ -16,6 +17,8 @@ const SearchSuggestion = () => {
 	const [displayRecipe, setDisplayRecipe] = useState([]);
 
 	let recipe;
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchIngredients = async () => {
@@ -110,7 +113,8 @@ const SearchSuggestion = () => {
 	const displayProto = displayRecipe.map((recipeObj, index) => (
 		<div
 			key={index}
-			className="w-full h-full border border-solid border-gray-300 rounded-xl shadow-sm bg-white cursor-pointer">
+			className="w-full h-full border border-solid border-gray-300 rounded-xl shadow-sm bg-white cursor-pointer"
+			onClick={() => handleDivClick(recipeObj.title)}>
 			<img
 				src={recipeObj.image}
 				alt=""
@@ -125,6 +129,14 @@ const SearchSuggestion = () => {
 			</div>
 		</div>
 	));
+
+	const handleDivClick = (recipeId) => {
+		// Encode the recipe ID parameter
+		const encodedRecipeId = encodeURIComponent(recipeId);
+
+		// Navigate to the new page using the encoded recipeId
+		navigate(`/recipe-app/recipe/${encodedRecipeId}`);
+	};
 
 	return (
 		<>
