@@ -195,50 +195,50 @@ const SearchSuggestion = () => {
 						</div>
 					)}
 				</div>
-			</div>
-			<div
-				id="recipeBox"
-				className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-6 items-start justify-center mx-8 sm:mx-8 md:mx-8 lg:mx-24 xl:mx-48">
-				{displayProto}
-			</div>
-			{displayProto.length === 0 && (
 				<div
-					className="flex flex-col items-center gap-6 lg:w-2/4 mx-6 lg:mx-6"
-					id="descBox">
-					<div className="desc p-4 rounded-md bg-white shadow">
-						<h1 className="text-2xl font-bold">What is PlateMate?</h1>
-						<p>
-							PlateMate is a free web application dedicated to bringing the rich
-							and flavorful world of Filipino cuisine to your home kitchen.
-							Designed to provide personalized recipe recommendations based on
-							the ingredients you currently have, PlateMate simplifies meal
-							planning and cooking. Discover creative and delicious Filipino
-							recipes that match the ingredients in your kitchen, making every
-							meal a delightful journey into the heart of Filipino culinary
-							traditions.
-						</p>
-					</div>
-					<div className="desc p-4 rounded-md bg-white shadow">
-						<h1 className="text-2xl font-bold">How to use PlateMate?</h1>
-						<p>
-							Discover delightful Filipino recipes effortlessly by typing your
-							available ingredients into PlateMate&apos;s search bar, and let
-							the app generate personalized recommendations tailored to your
-							kitchen inventory.
-						</p>
-					</div>
-					<div className="desc p-4 rounded-md bg-white shadow">
-						<h1 className="text-2xl font-bold">Features</h1>
-						<p>
-							PlateMate offers a seamless cooking experience through features
-							such as user accounts, ingredient inventory management, search and
-							filter options, detailed recipe information, save and share
-							functionalities, shopping list integration, and a responsive
-							design for user-friendly accessibility across devices.
-						</p>
-					</div>
+					id="recipeBox"
+					className="grid grid-cols-1 px-4 pt-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-6 items-start justify-center">
+					{displayProto}
 				</div>
-			)}
+				{displayProto.length === 0 && (
+					<div
+						className="flex flex-col items-center gap-6 lg:w-full"
+						id="descBox">
+						<div className="desc p-4 rounded-md bg-white shadow">
+							<h1 className="text-2xl font-bold">What is PlateMate?</h1>
+							<p>
+								PlateMate is a free web application dedicated to bringing the
+								rich and flavorful world of Filipino cuisine to your home
+								kitchen. Designed to provide personalized recipe recommendations
+								based on the ingredients you currently have, PlateMate
+								simplifies meal planning and cooking. Discover creative and
+								delicious Filipino recipes that match the ingredients in your
+								kitchen, making every meal a delightful journey into the heart
+								of Filipino culinary traditions.
+							</p>
+						</div>
+						<div className="desc p-4 rounded-md bg-white shadow">
+							<h1 className="text-2xl font-bold">How to use PlateMate?</h1>
+							<p>
+								Discover delightful Filipino recipes effortlessly by typing your
+								available ingredients into PlateMate&apos;s search bar, and let
+								the app generate personalized recommendations tailored to your
+								kitchen inventory.
+							</p>
+						</div>
+						<div className="desc p-4 rounded-md bg-white shadow">
+							<h1 className="text-2xl font-bold">Features</h1>
+							<p>
+								PlateMate offers a seamless cooking experience through features
+								such as user accounts, ingredient inventory management, search
+								and filter options, detailed recipe information, save and share
+								functionalities, shopping list integration, and a responsive
+								design for user-friendly accessibility across devices.
+							</p>
+						</div>
+					</div>
+				)}
+			</div>
 		</>
 	);
 };
