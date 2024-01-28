@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import RecipeSearch from './RecipeSearch.jsx';
+import { useAppState } from './AppStateContext';
 
 const API_INGREDIENTS_URL =
 	'https://raw.githubusercontent.com/raymayo/filipino-recipe-scrapping/main/prototype/prototype_ingredients.json';
@@ -9,12 +9,14 @@ const API_RECIPES_URL =
 	'https://raw.githubusercontent.com/raymayo/filipino-recipe-scrapping/main/prototype/prototype_recipes1.json';
 
 const SearchSuggestion = () => {
-	const [userInput, setUserInput] = useState('');
-	const [ingredientSuggestions, setIngredientSuggestions] = useState([]);
-	const [filteredIngr, setFilteredIngr] = useState([]);
-	const [ingredientArray, setIngredientArray] = useState([]);
-
-	const [displayRecipe, setDisplayRecipe] = useState([]);
+	const { searchSuggestionState, setSearchSuggestionState } = useAppState();
+	const {
+		userInput,
+		ingredientSuggestions,
+		filteredIngr,
+		ingredientArray,
+		displayRecipe,
+	} = searchSuggestionState;
 
 	let recipe;
 
@@ -28,18 +30,21 @@ const SearchSuggestion = () => {
 					throw new Error('Network response was not ok');
 				}
 				const suggestions = await res.json();
-				setIngredientSuggestions(suggestions);
+				setSearchSuggestionState((prev) => ({
+					...prev,
+					ingredientSuggestions: suggestions,
+				}));
 			} catch (error) {
 				console.error('Error fetching suggestions:', error);
 			}
 		};
 
 		fetchIngredients();
-	}, []);
+	}, [setSearchSuggestionState]);
 
 	const onIngrType = (e) => {
 		const input = e.target.value;
-		setUserInput(input);
+		setSearchSuggestionState((prev) => ({ ...prev, userInput: input }));
 
 		const filterSuggestions =
 			input.toLowerCase() !== ''
@@ -54,14 +59,20 @@ const SearchSuggestion = () => {
 						)
 				: [];
 
-		setFilteredIngr(filterSuggestions);
+		setSearchSuggestionState((prev) => ({
+			...prev,
+			filteredIngr: filterSuggestions,
+		}));
 	};
 
 	const getSelectedIngr = (e) => {
 		const selectedIngredient = e.target.textContent;
 		if (!ingredientArray.includes(selectedIngredient)) {
-			setIngredientArray([...ingredientArray, selectedIngredient]);
-			setUserInput('');
+			setSearchSuggestionState((prev) => ({
+				...prev,
+				ingredientArray: [...prev.ingredientArray, selectedIngredient],
+				userInput: '',
+			}));
 		}
 	};
 
@@ -88,8 +99,10 @@ const SearchSuggestion = () => {
 		);
 
 		if (foundRecipes.length > 0) {
-			// Update state once after the loop is done
-			setDisplayRecipe(foundRecipes);
+			setSearchSuggestionState((prev) => ({
+				...prev,
+				displayRecipe: foundRecipes,
+			}));
 			console.log(ingredientQuery);
 		} else {
 			console.log('No recipes found with the specified ingredients.');
@@ -97,7 +110,6 @@ const SearchSuggestion = () => {
 		}
 	};
 
-	// Use useEffect to log updated state after the component has re-rendered
 	useEffect(() => {
 		console.log(displayRecipe);
 	}, [displayRecipe]);
@@ -107,7 +119,10 @@ const SearchSuggestion = () => {
 		const modifiedArray = ingredientArray.filter(
 			(item) => item !== removedItem
 		);
-		setIngredientArray(modifiedArray);
+		setSearchSuggestionState((prev) => ({
+			...prev,
+			ingredientArray: modifiedArray,
+		}));
 	};
 
 	const displayProto = displayRecipe.map((recipeObj, index) => (
@@ -137,7 +152,6 @@ const SearchSuggestion = () => {
 		// Navigate to the new page using the encoded recipeId
 		navigate(`/recipe-app/recipe/${encodedRecipeId}`);
 	};
-
 	return (
 		<>
 			<h1 className="pt-10 text-5xl sm:text-6xl md:text-7xl lg:text-7xl">
