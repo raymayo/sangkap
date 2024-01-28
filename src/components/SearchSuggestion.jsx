@@ -216,6 +216,15 @@ const SearchSuggestion = () => {
 						</p>
 					</div>
 					<div className="desc p-4 rounded-md bg-white shadow">
+						<h1 className="text-2xl font-bold">How to use PlateMate?</h1>
+						<p>
+							Discover delightful recipes effortlessly by typing your available
+							ingredients into PlateMate&apos;s search bar, and let the app
+							generate personalized recommendations tailored to your kitchen
+							inventory.
+						</p>
+					</div>
+					<div className="desc p-4 rounded-md bg-white shadow">
 						<h1 className="text-2xl font-bold">Features</h1>
 						<p>
 							PlateMate offers a seamless cooking experience through features
@@ -223,17 +232,6 @@ const SearchSuggestion = () => {
 							filter options, detailed recipe information, save and share
 							functionalities, shopping list integration, and a responsive
 							design for user-friendly accessibility across devices.
-						</p>
-					</div>
-					<div className="desc p-4 rounded-md bg-white shadow">
-						<h1 className="text-2xl font-bold">Why can use PlateMate?</h1>
-						<p>
-							PlateMate is your ultimate app for those moments when you&apos;re
-							indecisive about what to eat or working with a limited supply of
-							ingredients! Bursting with enthusiasm, PlateMate turns every
-							mealtime dilemma into a culinary adventure. Whether you&apos;re a
-							cooking pro or facing kitchen uncertainties, let PlateMate guide
-							you to delicious and creative solutions
 						</p>
 					</div>
 				</div>
