@@ -170,7 +170,7 @@ const SearchSuggestion = () => {
 						/>
 						<button
 							onClick={searchRecipe}
-							className="bg-yellow-500 text-black border-l-0 p-2 rounded-r shadow">
+							className="bg-yellow-500 text-black border-l-0 p-2 rounded-r shadow font-medium">
 							Search
 						</button>
 					</div>
@@ -208,20 +208,23 @@ const SearchSuggestion = () => {
 					<div className="desc p-4 rounded-md bg-white shadow">
 						<h1 className="text-2xl font-bold">What is PlateMate?</h1>
 						<p>
-							PlateMate is a free web application designed to provide
-							personalized recipe recommendations based on the ingredients you
-							currently have at home. The app aims to simplify meal planning and
-							cooking by offering creative and delicious recipes that match the
-							ingredients in your kitchen.
+							PlateMate is a free web application dedicated to bringing the rich
+							and flavorful world of Filipino cuisine to your home kitchen.
+							Designed to provide personalized recipe recommendations based on
+							the ingredients you currently have, PlateMate simplifies meal
+							planning and cooking. Discover creative and delicious Filipino
+							recipes that match the ingredients in your kitchen, making every
+							meal a delightful journey into the heart of Filipino culinary
+							traditions.
 						</p>
 					</div>
 					<div className="desc p-4 rounded-md bg-white shadow">
 						<h1 className="text-2xl font-bold">How to use PlateMate?</h1>
 						<p>
-							Discover delightful recipes effortlessly by typing your available
-							ingredients into PlateMate&apos;s search bar, and let the app
-							generate personalized recommendations tailored to your kitchen
-							inventory.
+							Discover delightful Filipino recipes effortlessly by typing your
+							available ingredients into PlateMate&apos;s search bar, and let
+							the app generate personalized recommendations tailored to your
+							kitchen inventory.
 						</p>
 					</div>
 					<div className="desc p-4 rounded-md bg-white shadow">
