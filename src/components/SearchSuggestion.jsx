@@ -154,15 +154,15 @@ const SearchSuggestion = () => {
 	};
 	return (
 		<>
-			<h1 className="pt-10 text-5xl sm:text-6xl md:text-7xl lg:text-7xl">
-				Plate<span className="font-bold text-yellow-500">Mate</span>
+			<h1 className="pt-10 text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold italic">
+				plate<span className="text-green-500">mate</span>
 			</h1>
-			<div className="container mb-8 rounded">
+			<div className="container mb-8 rounded flex flex-col items-center">
 				<div id="recipeSearchBox" className="rounded p-8">
 					<div className="searchInput rounded">
 						<input
 							id="recipeSearchInput"
-							className="p-2 shadow-sm rounded-l border-b"
+							className="p-2 shadow-sm rounded-l border-b poppin"
 							type="text"
 							value={userInput}
 							onChange={onIngrType}
@@ -170,11 +170,11 @@ const SearchSuggestion = () => {
 						/>
 						<button
 							onClick={searchRecipe}
-							className="bg-yellow-500 text-black border-l-0 p-2 rounded-r shadow font-medium">
+							className="bg-green-500 text-black border-l-0 p-2 rounded-r shadow font-medium poppin">
 							Search
 						</button>
 					</div>
-					<div className="selectedItems rounded shadow bg-white">
+					<div className="selectedItems rounded shadow bg-white poppin">
 						{ingredientArray.map((item, index) => (
 							<span className="itemEntered" key={index}>
 								{item}
@@ -183,7 +183,7 @@ const SearchSuggestion = () => {
 						))}
 					</div>
 					{userInput && (
-						<div className="suggestionBox rounded shadow bg-white">
+						<div className="suggestionBox rounded shadow bg-white poppin">
 							{filteredIngr.map((suggestion, index) => (
 								<span
 									key={index}
@@ -202,11 +202,13 @@ const SearchSuggestion = () => {
 				</div>
 				{displayProto.length === 0 && (
 					<div
-						className="flex flex-col items-center gap-6 lg:w-full"
+						className="flex flex-col w-5/6 items-center gap-6 lg:w-4/6"
 						id="descBox">
 						<div className="desc p-4 rounded-md bg-white shadow">
-							<h1 className="text-2xl font-bold">What is PlateMate?</h1>
-							<p>
+							<h1 className="text-2xl font-bold text-green-500">
+								What is PlateMate?
+							</h1>
+							<p className="poppin">
 								PlateMate is a free web application dedicated to bringing the
 								rich and flavorful world of Filipino cuisine to your home
 								kitchen. Designed to provide personalized recipe recommendations
@@ -218,8 +220,10 @@ const SearchSuggestion = () => {
 							</p>
 						</div>
 						<div className="desc p-4 rounded-md bg-white shadow">
-							<h1 className="text-2xl font-bold">How to use PlateMate?</h1>
-							<p>
+							<h1 className="text-2xl font-bold text-green-500">
+								How to use PlateMate?
+							</h1>
+							<p className="poppin">
 								Discover delightful Filipino recipes effortlessly by typing your
 								available ingredients into PlateMate&apos;s search bar, and let
 								the app generate personalized recommendations tailored to your
@@ -227,8 +231,8 @@ const SearchSuggestion = () => {
 							</p>
 						</div>
 						<div className="desc p-4 rounded-md bg-white shadow">
-							<h1 className="text-2xl font-bold">Features</h1>
-							<p>
+							<h1 className="text-2xl font-bold text-green-500">Features</h1>
+							<p className="poppin">
 								PlateMate offers a seamless cooking experience through features
 								such as user accounts, ingredient inventory management, search
 								and filter options, detailed recipe information, save and share

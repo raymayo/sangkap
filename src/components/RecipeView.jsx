@@ -41,43 +41,46 @@ const RecipeView = () => {
 		// 	{/* Add more details as needed */}
 		// </div>
 		<>
-			<h1 className="pt-10 text-5xl sm:text-6xl md:text-7xl lg:text-7xl">
-				Plate<span className="font-bold text-yellow-500">Mate</span>
+			<h1 className="pt-8 text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold">
+				plate<span className="text-green-500 italic">mate</span>
 			</h1>
-			<div className="recipeContainer flex flex-col items-center mt-8 gap-y-8 lg:mx-32 lg:my-8 lg:pt-8">
-				<div className="flex flex-col items-center gap-y-4">
-					<h1 className="text-4xl font-bold text-center">{recipeData.title}</h1>
-					<p className="text-center text-xl w-2/3">{recipeData.summary}</p>
+			<div className="recipeContainer grid gap-4 mt-8 rounded-md grid-cols-1 w-3/6 lg:w-4/6 md:grid-cols-1 lg:grid-cols-2 bg-white shadow-md">
+				{/* md:bg-red-500 xl:bg-green-500 lg:bg-blue-500 */}
+				<div className="bg-white shadow-md">
+					<img
+						src={recipeData.image}
+						alt={recipeData.title}
+						className="object-cover w-full h-full"
+					/>
 				</div>
-				<div className="grid gap-2 w-full bg-white rounded-md shadow-md sm:grid-cols-1 lg:grid-cols-3 p-4 lg:p-0">
-					<div>
-						<img
-							src={recipeData.image}
-							alt={recipeData.title}
-							className="rounded-l-md"
-						/>
-					</div>
-					<div>
-						<div className="p-4">
-							<h1 className="font-bold text-3xl">Ingredients</h1>
-							<ul className="text-lg py-4">
-								{recipeData.ingredientList.map((item, index) => (
-									<li key={index}>•{item}</li>
-								))}
-							</ul>
-						</div>
-					</div>
-					<div className="p-4">
-						<h1 className="font-bold text-3xl">Instruction</h1>
-						<ul className="text-lg py-4">
-							{recipeData.instruction.map((item, index) => (
-								<li key={index}>
-									{index}. {item}
-								</li>
-							))}
-						</ul>
-					</div>
+				<div className="space-y-2 p-4 flex flex-col">
+					<h1 className="text-6xl font-medium uppercase lg:text-5xl xl:text-7xl">
+						{recipeData.title}
+					</h1>
+					<p className="text-base font-normal poppin lg:text-base xl:text-xl">
+						{recipeData.summary}
+					</p>
+					<h1 className="font-medium text-3xl uppercase lg:text-3xl xl:text-4xl">
+						Ingredients
+					</h1>
+					<ul className="text-base lg:text-base xl:text-xl">
+						{recipeData.ingredientList.map((item, index) => (
+							<li key={index} className="poppin">
+								{item}
+							</li>
+						))}
+					</ul>
 				</div>
+			</div>
+			<div className="my-8 bg-white shadow-md p-4 rounded-md w-4/6 space-y-2">
+				<h1 className="font-medium text-3xl uppercase">Instruction</h1>
+				<ul className="text-lg">
+					{recipeData.instruction.map((item, index) => (
+						<li key={index} className="poppin">
+							{index}. {item}
+						</li>
+					))}
+				</ul>
 			</div>
 		</>
 	);
