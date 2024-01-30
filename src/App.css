@@ -45,7 +45,7 @@
 :root {
   --accent: #f45300;
   --black: #121212;
-  --white: #e8eae8;
+  /* --white: #e8eae8; */
 }
 
 #root {
@@ -59,7 +59,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Playfair Display", serif;
+  font-family: "Poppins", sans-serif !important;
   font-optical-sizing: auto;
 }
 
@@ -110,27 +110,27 @@ body {
 
 .itemEntered {
   padding: .3em;
-  border: solid 1px #F59E0C;
+  border: solid 1px rgba(5, 150, 104, 1);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: .2em;
   border-radius: .5em;
   margin: .4em;
-  background-color: rgba(245, 158, 12, 0.2);
-  color: #F59E0C;
+  background-color: rgba(5, 150, 104, 0.3);
+  color: rgba(5, 150, 104, 1);
 }
 
 .mealTag {
-  background-color: rgba(245, 158, 12, 0.2);
-  border: solid 1px #F59E0C;
-  color: #F59E0C;
+  background-color: rgba(5, 150, 104, 0.3);
+  border: solid 1px rgba(5, 150, 104, 1);
+  color: rgba(5, 150, 104, 1);
 }
 
 
 .itemEntered button {
   padding: 0 .1em;
-  color: #F59E0C;
+  color: rgba(5, 150, 104, 1);
   font-weight: bold;
   font-size: 1em;
   background: none;
