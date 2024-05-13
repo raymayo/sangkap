@@ -1,21 +1,21 @@
-# PlateMate
+# Sangkap
 
-PlateMate is a web app that helps you discover delightful Filipino recipes by generating personalized recommendations tailored to your kitchen inventory.
+Sangkap is a web app that helps you discover delightful Filipino recipes by generating personalized recommendations tailored to your kitchen inventory.
 
 ## Installation
 
-PlateMate doesn't require any installation. Simply visit the website at [raymayo.github.io/recipe-app/](https://raymayo.github.io/recipe-app/) to start using it.
+Sangkap doesn't require any installation. Simply visit the website at [raymayo.github.io/recipe-app/](https://raymayo.github.io/recipe-app/) to start using it.
 
 ## Usage
 
 1. Open your web browser and navigate to [raymayo.github.io/recipe-app/](https://raymayo.github.io/recipe-app/).
-2. Find Filipino recipes effortlessly by typing your available ingredients into PlateMate's search bar.
-3. Let PlateMate generate personalized recommendations tailored to your kitchen inventory.
+2. Find Filipino recipes effortlessly by typing your available ingredients into Sangkap's search bar.
+3. Let Sangkap generate personalized recommendations tailored to your kitchen inventory.
 
 
 ## Technologies Used
 
-PlateMate is built using the following technologies:
+Sangkap is built using the following technologies:
 
 - JavaScript
 - React JS
@@ -24,7 +24,7 @@ PlateMate is built using the following technologies:
 
 ## Dependencies
 
-PlateMate relies on the following dependencies:
+Sangkap relies on the following dependencies:
 
 - [React JS](https://reactjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
@@ -32,7 +32,7 @@ PlateMate relies on the following dependencies:
 
 ## License
 
-PlateMate is distributed under the [MIT License](LICENSE).
+Sangkap is distributed under the [MIT License](LICENSE).
 
 ## Contact Information
 
