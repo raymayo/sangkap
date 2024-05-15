@@ -158,8 +158,8 @@ const SearchSuggestion = () => {
 			<div className="bg-gray-200">
 				<nav className="w-full grid p-6 justify-center">
 					<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-base text-green-600">
-						<PiBowlFoodFill />
-						plate<span className="">mate</span>
+						{/* <PiBowlFoodFill /> */}
+						🌽Sang<span className="">kap</span>
 					</h1>
 				</nav>
 				<div className="container mb-8 rounded flex flex-col items-center bg-gray-200">
@@ -211,14 +211,14 @@ const SearchSuggestion = () => {
 							id="descBox">
 							<div className="desc p-4 rounded-md bg-white shadow">
 								<h1 className="text-2xl font-semibold text-green-500">
-									What is PlateMate?
+									What is Sangkap?
 								</h1>
 								<p className="poppin">
-									PlateMate is a free web application dedicated to bringing the
+									Sangkap is a free web application dedicated to bringing the
 									rich and flavorful world of Filipino cuisine to your home
 									kitchen. Designed to provide personalized recipe
 									recommendations based on the ingredients you currently have,
-									PlateMate simplifies meal planning and cooking. Discover
+									Sangkap simplifies meal planning and cooking. Discover
 									creative and delicious Filipino recipes that match the
 									ingredients in your kitchen, making every meal a delightful
 									journey into the heart of Filipino culinary traditions.
@@ -226,13 +226,13 @@ const SearchSuggestion = () => {
 							</div>
 							<div className="desc p-4 rounded-md bg-white shadow">
 								<h1 className="text-2xl font-semibold text-green-500">
-									How to use PlateMate?
+									How to use Sangkap?
 								</h1>
 								<p className="poppin">
 									Discover delightful Filipino recipes effortlessly by typing
-									your available ingredients into PlateMate&apos;s search bar,
-									and let the app generate personalized recommendations tailored
-									to your kitchen inventory.
+									your available ingredients into Sangkap&apos;s search bar, and
+									let the app generate personalized recommendations tailored to
+									your kitchen inventory.
 								</p>
 							</div>
 							<div className="desc p-4 rounded-md bg-white shadow">
@@ -240,12 +240,12 @@ const SearchSuggestion = () => {
 									Features
 								</h1>
 								<p className="poppin">
-									PlateMate offers a seamless cooking experience through
-									features such as user accounts, ingredient inventory
-									management, search and filter options, detailed recipe
-									information, save and share functionalities, shopping list
-									integration, and a responsive design for user-friendly
-									accessibility across devices.
+									Sangkap offers a seamless cooking experience through features
+									such as user accounts, ingredient inventory management, search
+									and filter options, detailed recipe information, save and
+									share functionalities, shopping list integration, and a
+									responsive design for user-friendly accessibility across
+									devices.
 								</p>
 							</div>
 						</div>
