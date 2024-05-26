@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { PiBowlFoodFill } from 'react-icons/pi';
 import { useNavigate } from 'react-router-dom';
 import { useAppState } from './AppStateContext';
+import { PiMagnifyingGlassBold } from 'react-icons/pi';
+import { PiXBold } from 'react-icons/pi';
 
 const API_INGREDIENTS_URL =
 	'https://raw.githubusercontent.com/raymayo/filipino-recipe-scrapping/main/prototype/prototype_ingredients.json';
@@ -129,7 +131,7 @@ const SearchSuggestion = () => {
 	const displayProto = displayRecipe.map((recipeObj, index) => (
 		<div
 			key={index}
-			className="w-full h-full border border-solid border-gray-300 rounded-xl shadow-sm bg-white cursor-pointer"
+			className="w-full h-full border border-solid border-gray-300 rounded-xl bg-white cursor-pointer"
 			onClick={() => handleDivClick(recipeObj.title)}>
 			<img
 				src={recipeObj.image}
@@ -151,44 +153,46 @@ const SearchSuggestion = () => {
 		const encodedRecipeId = encodeURIComponent(recipeId);
 
 		// Navigate to the new page using the encoded recipeId
-		navigate(`/recipe-app/recipe/${encodedRecipeId}`);
+		navigate(`recipe/${encodedRecipeId}`);
 	};
 	return (
 		<>
-			<div className="bg-gray-200">
+			<div className="box-section">
 				<nav className="w-full grid p-6 justify-center">
-					<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-base text-green-600">
-						{/* <PiBowlFoodFill /> */}
-						🌽Sang<span className="">kap</span>
+					<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold">
+						<PiBowlFoodFill />
+						Sangkap
 					</h1>
 				</nav>
-				<div className="container mb-8 rounded flex flex-col items-center bg-gray-200">
+				<div className="container mb-8 rounded flex flex-col items-center box-section">
 					<div id="recipeSearchBox" className="rounded p-8">
-						<div className="searchInput rounded">
+						<div className="searchInput rounded-3xl px-1">
+							<button
+								onClick={searchRecipe}
+								className="search-btn border-l-0 p-2 rounded-r font-medium poppin">
+								<PiMagnifyingGlassBold />
+							</button>
 							<input
 								id="recipeSearchInput"
-								className="p-2 shadow-sm rounded-l border-b poppin"
+								className="p-3 rounded-3xl poppin"
 								type="text"
 								value={userInput}
 								onChange={onIngrType}
 								placeholder="Add Ingredients"
 							/>
-							<button
-								onClick={searchRecipe}
-								className="bg-green-500 text-green-900 text-black border-l-0 p-2 rounded-r shadow font-medium poppin">
-								Search
-							</button>
 						</div>
-						<div className="selectedItems rounded shadow bg-white poppin">
+						<div className="selectedItems rounded bg-white poppin">
 							{ingredientArray.map((item, index) => (
 								<span className="itemEntered" key={index}>
 									{item}
-									<button onClick={deleteItemOnArray}>x</button>
+									<button onClick={deleteItemOnArray} className="delete-btn">
+										✖
+									</button>
 								</span>
 							))}
 						</div>
 						{userInput && (
-							<div className="suggestionBox rounded shadow bg-white poppin">
+							<div className="suggestionBox rounded-3xl poppin">
 								{filteredIngr.map((suggestion, index) => (
 									<span
 										key={index}
@@ -209,8 +213,8 @@ const SearchSuggestion = () => {
 						<div
 							className="flex flex-col w-5/6 items-center gap-6 lg:w-4/6"
 							id="descBox">
-							<div className="desc p-4 rounded-md bg-white shadow">
-								<h1 className="text-2xl font-semibold text-green-500">
+							<div className="desc p-6 rounded-3xl bg-white">
+								<h1 className="text-2xl font-semibold text-color-var">
 									What is Sangkap?
 								</h1>
 								<p className="poppin">
@@ -224,8 +228,8 @@ const SearchSuggestion = () => {
 									journey into the heart of Filipino culinary traditions.
 								</p>
 							</div>
-							<div className="desc p-4 rounded-md bg-white shadow">
-								<h1 className="text-2xl font-semibold text-green-500">
+							<div className="desc p-6 rounded-3xl bg-white">
+								<h1 className="text-2xl font-semibold text-color-var">
 									How to use Sangkap?
 								</h1>
 								<p className="poppin">
@@ -235,8 +239,8 @@ const SearchSuggestion = () => {
 									your kitchen inventory.
 								</p>
 							</div>
-							<div className="desc p-4 rounded-md bg-white shadow">
-								<h1 className="text-2xl font-semibold text-green-500">
+							<div className="desc p-6 rounded-3xl bg-white">
+								<h1 className="text-2xl font-semibold text-color-var">
 									Features
 								</h1>
 								<p className="poppin">

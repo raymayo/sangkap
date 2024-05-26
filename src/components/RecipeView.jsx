@@ -55,9 +55,9 @@ const RecipeView = () => {
 	return (
 		<>
 			<nav className="w-full grid p-6 justify-center">
-				<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-base text-green-600">
+				<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold text-green-600">
 					<PiBowlFoodFill />
-					plate<span className="">mate</span>
+					Sangkap
 				</h1>
 			</nav>
 
