@@ -140,17 +140,16 @@ input:-webkit-autofill {
   justify-content: center;
   align-items: center;
   border-radius: .5em;
-  background-color: #232410;
-  color: #F3F3E7 !important;
+  background-color: #E0E0D1;
+  color: #232410 !important;
   gap: .25rem;
   margin-top: .5rem;
   ;
 }
 
 .mealTag {
-  background-color: rgba(5, 150, 104, 0.3);
-  border: solid 1px rgba(5, 150, 104, 1);
-  color: rgba(5, 150, 104, 1);
+  background-color: #232410;
+  color: #F3F3E7 !important;
 }
 
 
@@ -290,14 +289,6 @@ textarea {
 
 }
 
-.delete-btn {
-  color: #F3F3E7 !important;
-  font-weight: 400 !important;
-
-  * {
-    color: #F3F3E7 !important;
-  }
-}
 
 input::placeholder {
   color: #E0E0D1;
@@ -305,7 +296,7 @@ input::placeholder {
   /* Firefox */
 }
 
-::-ms-input-placeholder {
-  /* Edge 12 -18 */
-  color: red;
+
+.display-card {
+  background-color: #E0E0D1;
 }

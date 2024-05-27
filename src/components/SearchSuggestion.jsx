@@ -131,16 +131,16 @@ const SearchSuggestion = () => {
 	const displayProto = displayRecipe.map((recipeObj, index) => (
 		<div
 			key={index}
-			className="w-full h-full border border-solid border-gray-300 rounded-xl bg-white cursor-pointer"
+			className="w-full h-full border border-solid rounded-3xl cursor-pointer display-card"
 			onClick={() => handleDivClick(recipeObj.title)}>
 			<img
 				src={recipeObj.image}
 				alt=""
-				className="w-full h-64 object-cover rounded-t-md"
+				className="w-full h-64 object-cover rounded-t-3xl"
 			/>
 			<div className="p-4 flex gap-1 flex-col">
 				<h1 className="text-2xl font-bold">{recipeObj.title}</h1>
-				<p className="mealTag text-base border self-start px-1.5 py-.5 rounded-xl">
+				<p className="mealTag text-base border self-start px-2 py-1 rounded-xl">
 					{recipeObj.meal}
 				</p>
 				<p>{recipeObj.summary}</p>
@@ -158,15 +158,15 @@ const SearchSuggestion = () => {
 	return (
 		<>
 			<div className="box-section">
-				<nav className="w-full grid p-6 justify-center">
+				<nav className="w-full grid py-4 justify-center">
 					<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold">
 						<PiBowlFoodFill />
 						Sangkap
 					</h1>
 				</nav>
-				<div className="container mb-8 rounded flex flex-col items-center box-section">
-					<div id="recipeSearchBox" className="rounded p-8">
-						<div className="searchInput rounded-3xl px-1">
+				<div className="container rounded flex flex-col items-center box-section">
+					<div id="recipeSearchBox" className="rounded py-4">
+						<div className="searchInput rounded-3xl">
 							<button
 								onClick={searchRecipe}
 								className="search-btn border-l-0 p-2 rounded-r font-medium poppin">
@@ -185,9 +185,7 @@ const SearchSuggestion = () => {
 							{ingredientArray.map((item, index) => (
 								<span className="itemEntered" key={index}>
 									{item}
-									<button onClick={deleteItemOnArray} className="delete-btn">
-										✖
-									</button>
+									<button onClick={deleteItemOnArray}>✖</button>
 								</span>
 							))}
 						</div>
@@ -206,7 +204,7 @@ const SearchSuggestion = () => {
 					</div>
 					<div
 						id="recipeBox"
-						className="grid grid-cols-1 px-4 pt-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-6 items-start justify-center">
+						className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-8 md:gap-8 lg:gap-6 xl:gap-6 items-start justify-center">
 						{displayProto}
 					</div>
 					{displayProto.length === 0 && (
