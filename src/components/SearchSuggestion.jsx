@@ -165,13 +165,8 @@ const SearchSuggestion = () => {
 					</h1>
 				</nav>
 				<div className="container rounded flex flex-col items-center box-section">
-					<div id="recipeSearchBox" className="rounded py-4">
+					<div id="recipeSearchBox" className="rounded py-4 pb-8">
 						<div className="searchInput rounded-3xl">
-							<button
-								onClick={searchRecipe}
-								className="search-btn border-l-0 p-2 rounded-r font-medium poppin">
-								<PiMagnifyingGlassBold />
-							</button>
 							<input
 								id="recipeSearchInput"
 								className="p-3 rounded-3xl poppin"
@@ -180,6 +175,11 @@ const SearchSuggestion = () => {
 								onChange={onIngrType}
 								placeholder="Add Ingredients"
 							/>
+							<button
+								onClick={searchRecipe}
+								className="search-btn border-l-0 p-2 rounded-r font-medium poppin">
+								<PiMagnifyingGlassBold />
+							</button>
 						</div>
 						<div className="selectedItems rounded bg-white poppin">
 							{ingredientArray.map((item, index) => (

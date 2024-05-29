@@ -52,8 +52,17 @@ const RecipeView = () => {
 		}
 		setCount(count - 1);
 	};
+
+	const style = {
+		width: '100%',
+		height: '100%',
+		backgroundImage: `url(${recipeData.image})`,
+		backgroundSize: 'cover', // Make sure the background covers the whole area
+		backgroundPosition: 'center', // Center the background image
+	};
+
 	return (
-		<>
+		<div className="recipeViewContainer">
 			<nav className="w-full grid p-6 justify-center">
 				<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold text-green-600">
 					<PiBowlFoodFill />
@@ -61,26 +70,20 @@ const RecipeView = () => {
 				</h1>
 			</nav>
 
-			<div className="recipeContainer grid gap-0 mt-8 rounded-lg grid-cols-1 w-3/6 lg:w-4/6 xl:w-7/12 md:w-5/6 w-5/6 md:grid-cols-1 lg:grid-cols-2 bg-white shadow-md lg:gap-4 xl:gap-4">
+			<div className="recipeContainer grid gap-0 mt-8 rounded-3xl grid-cols-1 w-1/2 lg:w-4/6 xl:w-7/12 md:w-5/6 w-5/6 md:grid-cols-1 lg:grid-cols-2">
 				{/* md:bg-red-500 xl:bg-green-500 lg:bg-blue-500 */}
-				<div className="bg-white rounded-l-md">
-					<img
-						src={recipeData.image}
-						alt={recipeData.title}
-						className="object-cover w-full h-44 sm:h-52 md:h-64 lg:h-full xl:h-full rounded-l-md"
-					/>
-				</div>
-				<div className="space-y-2 p-4 flex flex-col lg:space-y-4 xl:space-y-4">
-					<h1 className="text-gray-900 text-6xl font-semibold uppercase md:text-7xl lg:text-5xl xl:text-6xl sm:w-5/6 lg:w-5/6 xl:w-5/6">
+				<div className="imageContainer rounded-l-3xl" style={style}></div>
+				<div className="recipeInfo p-6 space-y-2 p-4 flex flex-col lg:space-y-4 xl:space-y-4">
+					<h1 className="text-gray-900 text-4xl font-semibold md:text-7xl lg:text-5xl xl:text-5xl sm:w-5/6 lg:w-5/6 xl:w-5/6">
 						{recipeData.title}
 					</h1>
-					<p className="text-gray-900 text-base font-normal poppin lg:text-base xl:text-lg">
+					<p className="text-gray-900 text-sm leading-normal font-normal poppin lg:text-base xl:text-lg">
 						{recipeData.summary}
 					</p>
-					<h1 className="text-gray-900 font-semibold text-4xl uppercase sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl">
+					<h1 className="text-gray-900 font-semibold text-4xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl">
 						Ingredients
 					</h1>
-					<ul className="text-gray-900 text-base lg:text-base xl:text-lg">
+					<ul className="text-gray-900  text-sm leading-normal lg:text-base xl:text-lg">
 						{recipeData.ingredientList.map((item, index) => (
 							<li key={index} className="poppin">
 								{item}
@@ -102,16 +105,24 @@ const RecipeView = () => {
 					))}
 				</ul>
 			</div> */}
-			<div className="bg-white shadow-md p-4 rounded-md space-y-2 w-3/6 lg:w-4/6 xl:w-7/12 md:w-5/6 w-5/6 my-8">
-				<h1 className="font-semibold text-4xl uppercase">Instruction</h1>
+			<div className="instructionBox p-6 rounded-3xl space-y-2 w-3/6 lg:w-4/6 xl:w-7/12 md:w-5/6 w-5/6 my-8">
+				<h1 className="instructionTitle font-semibold text-4xl pb-2">
+					Instruction
+				</h1>
 				<span className="text-gray-900 font-semibold">Step {count + 1}:</span>
-				<h1>{recipeData.instruction[count]}</h1>
+				<h1 className="text-normal leading-normal">
+					{recipeData.instruction[count]}
+				</h1>
 				<div className="flex justify-end gap-2">
-					<button onClick={goPrevInstruction}>prev</button>
-					<button onClick={goNextInstruction}>next</button>
+					<button onClick={goPrevInstruction} className="stepsButton">
+						Prev
+					</button>
+					<button onClick={goNextInstruction} className="stepsButton">
+						Next
+					</button>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
