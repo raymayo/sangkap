@@ -354,7 +354,7 @@ input::placeholder {
       font-size: 14px;
     }
 
-    h1 {
+    :is(h1) {
       font-size: 2rem;
     }
   }
