@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PiBowlFoodFill } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 const RecipeView = () => {
 	const { recipeId } = useParams(); // Access the recipe ID parameter from the URL
 	const [recipeData, setRecipeData] = useState(null);
 	const [count, setCount] = useState(0);
+	const navigate = useNavigate();
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -53,6 +56,10 @@ const RecipeView = () => {
 		setCount(count - 1);
 	};
 
+	const goHome = () => {
+		navigate(`/sangkap`);
+	};
+
 	const style = {
 		width: '100%',
 		height: '100%',
@@ -63,8 +70,8 @@ const RecipeView = () => {
 
 	return (
 		<div className="recipeViewContainer">
-			<nav className="w-full grid p-6 justify-center">
-				<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold text-green-600">
+			<nav className="w-full grid justify-center">
+				<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold">
 					<PiBowlFoodFill />
 					Sangkap
 				</h1>
@@ -72,7 +79,9 @@ const RecipeView = () => {
 
 			<div className="recipeContainer grid gap-0 mt-8 rounded-3xl grid-cols-1 w-1/2 lg:w-4/6 xl:w-7/12 md:w-5/6 w-5/6 md:grid-cols-1 lg:grid-cols-2">
 				{/* md:bg-red-500 xl:bg-green-500 lg:bg-blue-500 */}
-				<div className="imageContainer rounded-l-3xl" style={style}></div>
+				<div className="imageContainer rounded-l-3xl" style={style}>
+					<FaArrowLeft onClick={goHome} className="goHome" size={40} />
+				</div>
 				<div className="recipeInfo p-6 space-y-2 p-4 flex flex-col lg:space-y-4 xl:space-y-4">
 					<h1 className="text-gray-900 text-4xl font-semibold md:text-7xl lg:text-5xl xl:text-5xl sm:w-5/6 lg:w-5/6 xl:w-5/6">
 						{recipeData.title}
@@ -114,10 +123,18 @@ const RecipeView = () => {
 					{recipeData.instruction[count]}
 				</h1>
 				<div className="flex justify-end gap-2">
-					<button onClick={goPrevInstruction} className="stepsButton">
-						Prev
+					<button
+						onClick={goPrevInstruction}
+						className={`stepsButton ${count === 0 ? 'disabledButton' : ''}`}>
+						Previous
 					</button>
-					<button onClick={goNextInstruction} className="stepsButton">
+					<button
+						onClick={goNextInstruction}
+						className={`stepsButton ${
+							count === recipeData.instruction.length - 1
+								? 'disabledButton'
+								: ''
+						}`}>
 						Next
 					</button>
 				</div>

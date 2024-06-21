@@ -51,7 +51,6 @@
 #root {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -61,7 +60,17 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif !important;
   font-optical-sizing: auto;
-  color: #232410 !important;
+  color: #232410;
+}
+
+.goHome {
+  cursor: pointer;
+  background-color: #E0E0D1;
+  margin: 1rem;
+  border-radius: 50rem;
+  padding: .5rem;
+
+
 }
 
 body {
@@ -155,7 +164,7 @@ input:-webkit-autofill {
 
 .itemEntered button {
   padding: 0 .1em;
-  color: rgba(5, 150, 104, 1);
+  color: #232410;
   font-weight: bold;
   font-size: 1em;
   background: none;
@@ -248,6 +257,11 @@ textarea {
   /* border: solid 1px #F59E0C; */
 }
 
+.disabledButton {
+  background-color: #abab9f !important;
+  color: #E0E0D1 !important;
+}
+
 
 @media screen and (max-width: 650px) {
 
@@ -261,6 +275,12 @@ textarea {
   }
 
 }
+
+body {
+  padding: 2rem;
+}
+
+
 
 #root {
   background-color: #F3F3E7;
@@ -312,8 +332,8 @@ input::placeholder {
   background-color: #E0E0D1 !important;
 
   .stepsButton {
-    background-color: #232410 !important;
-    color: #F3F3E7 !important;
+    background-color: #232410;
+    color: #F3F3E7;
     padding: .5rem 1rem;
     border-radius: 50rem;
   }
