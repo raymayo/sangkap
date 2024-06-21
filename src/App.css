@@ -350,16 +350,16 @@ input::placeholder {
   .recipeInfo {
     padding: 1rem 1rem 1rem 1rem;
 
-    h1 {
-      font-size: 2rem;
-    }
-
     p {
       font-size: 14px;
     }
 
     li {
       font-size: 14px;
+    }
+
+    h1 {
+      font-size: 2rem;
     }
   }
 
