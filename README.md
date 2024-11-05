@@ -1,6 +1,6 @@
 # Sangkap
 
-**Working Concept**
+**(Working Concept)**
 
 Sangkap is a web app that helps you discover delightful Filipino recipes by generating personalized recommendations tailored to your kitchen inventory.
 
