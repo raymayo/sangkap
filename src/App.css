@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -42,10 +47,31 @@
   color: #888;
 } */
 
-:root {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* :root {
   --accent: #f45300;
   --black: #121212;
-  /* --white: #e8eae8; */
 }
 
 #root {
@@ -95,12 +121,10 @@ body {
   margin: auto;
   display: flex;
   flex-direction: column;
-  /* border: solid 1px red; */
 }
 
 .searchInput {
   display: flex;
-  /* border: solid 1px red; */
   background-color: #E0E0D1;
 }
 
@@ -130,16 +154,13 @@ input {
   autocomplete: off;
 }
 
-/* Change autocomplete background color */
 input:-webkit-autofill {
   background-color: #232410;
-  /* Change to your desired background color */
+
 }
 
-/* Change autocomplete text color */
 input:-webkit-autofill {
   color: #F3F3E7;
-  /* Change to your desired text color */
 }
 
 
@@ -233,17 +254,9 @@ header {
 input[type="text"],
 input[type="password"],
 textarea {
-  /* border: none; */
   outline: none;
 }
 
-.selectedItems {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #F3F3E7;
-  gap: 0 .5rem;
-
-}
 
 .poppin {
   font-family: "Poppins", sans-serif !important;
@@ -254,8 +267,6 @@ textarea {
 .desc {
   background-color: #E0E0D1;
   color: #232410;
-  /* border: solid 1px #F59E0C; */
-}
 
 .disabledButton {
   background-color: #abab9f !important;
@@ -307,7 +318,6 @@ body {
 input::placeholder {
   color: #E0E0D1;
   opacity: 1;
-  /* Firefox */
 }
 
 
@@ -340,11 +350,14 @@ input::placeholder {
 }
 
 
+
+} */
+
 @media screen and (max-width: 1024px) {
 
   .imageContainer {
     height: 8rem !important;
-    border-radius: 1.5rem 1.5rem 0 0 !important;
+    border-radius: .5rem .5rem 0 0 !important;
   }
 
   .recipeInfo {
@@ -362,5 +375,3 @@ input::placeholder {
   .instructionTitle {
     font-size: 2rem;
   }
-
-}

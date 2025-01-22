@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppState } from './AppStateContext';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
 import { PiXBold } from 'react-icons/pi';
+import { LuX } from "react-icons/lu";
 
 const API_INGREDIENTS_URL =
 	'https://raw.githubusercontent.com/raymayo/filipino-recipe-scrapping/main/prototype/prototype_ingredients.json';
@@ -131,16 +132,16 @@ const SearchSuggestion = () => {
 	const displayProto = displayRecipe.map((recipeObj, index) => (
 		<div
 			key={index}
-			className="w-full h-full border border-solid rounded-3xl cursor-pointer display-card"
+			className="w-full h-full border cursor-pointer display-card rounded-lg"
 			onClick={() => handleDivClick(recipeObj.title)}>
 			<img
 				src={recipeObj.image}
 				alt=""
-				className="w-full h-64 object-cover rounded-t-3xl"
+				className="w-full h-64 object-cover rounded-t-lg"
 			/>
 			<div className="p-4 flex gap-1 flex-col">
 				<h1 className="text-2xl font-bold">{recipeObj.title}</h1>
-				<p className="mealTag text-base border self-start px-2 py-1 rounded-xl">
+				<p className="mealTag text-base border self-start px-1.5 py-1 rounded-md shadow-sm">
 					{recipeObj.meal}
 				</p>
 				<p>{recipeObj.summary}</p>
@@ -157,45 +158,45 @@ const SearchSuggestion = () => {
 	};
 	return (
 		<>
-			<div className="box-section">
+			<div className="box-section h-screen grid place-items-center px-8">
+				<div className="container rounded flex flex-col items-center box-sectionh-full">
 				<nav className="w-full grid py-4 justify-center">
 					<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold">
 						<PiBowlFoodFill />
 						Sangkap
 					</h1>
 				</nav>
-				<div className="container rounded flex flex-col items-center box-section">
-					<div id="recipeSearchBox" className="rounded py-4 pb-8">
-						<div className="searchInput rounded-3xl">
+					<div id="recipeSearchBox" className="rounded py-4 pb-8 w-full xl:w-2/4 lg:w-2/3">
+						<div className="searchInput flex gap-1.5 w-full">
 							<input
 								id="recipeSearchInput"
-								className="p-3 rounded-3xl poppin"
+								className="px-2 py-1 poppin border border-zinc-200 rounded-md shadow-sm w-full"
 								type="text"
 								value={userInput}
 								onChange={onIngrType}
-								placeholder="Add Ingredients"
+								placeholder="Search Ingredients"
 							/>
 							<button
 								onClick={searchRecipe}
-								className="search-btn border-l-0 p-2 rounded-r font-medium poppin">
-								<PiMagnifyingGlassBold />
+								className="search-btn px-3 font-medium poppin rounded-md bg-black text-white shadow-sm">
+								<PiMagnifyingGlassBold size={18}/>
 							</button>
 						</div>
-						<div className="selectedItems rounded bg-white poppin">
+						<div className="selectedItems poppin text-black flex gap-1 mt-1">
 							{ingredientArray.map((item, index) => (
-								<span className="itemEntered" key={index}>
+								<span className="itemEntered py-1 px-1.5 border border-zinc-200 flex gap-1 w-fit rounded-md shadow-sm" key={index}>
 									{item}
-									<button onClick={deleteItemOnArray}>✖</button>
+									<button onClick={deleteItemOnArray} className='text-black'><LuX size={16}/></button>
 								</span>
 							))}
 						</div>
 						{userInput && (
-							<div className="suggestionBox rounded-3xl poppin">
+							<div className="suggestionBox poppin flex flex-col max-h-40 overflow-scroll rounded-md border border-zinc-200 mt-2">
 								{filteredIngr.map((suggestion, index) => (
 									<span
 										key={index}
 										onClick={getSelectedIngr}
-										className="suggestion">
+										className="suggestion cursor-pointer px-2 hover:bg-black hover:text-white rounded-sm">
 										{suggestion}
 									</span>
 								))}
@@ -209,9 +210,9 @@ const SearchSuggestion = () => {
 					</div>
 					{displayProto.length === 0 && (
 						<div
-							className="flex flex-col w-5/6 items-center gap-6 lg:w-4/6"
+							className="flex flex-col w-full items-center gap-6 lg:w-4/6"
 							id="descBox">
-							<div className="desc p-6 rounded-3xl bg-white">
+							<div className="desc p-6 bg-white border border-zinc-200 shadow-sm rounded-lg">
 								<h1 className="text-2xl font-semibold text-color-var">
 									What is Sangkap?
 								</h1>
@@ -226,7 +227,7 @@ const SearchSuggestion = () => {
 									journey into the heart of Filipino culinary traditions.
 								</p>
 							</div>
-							<div className="desc p-6 rounded-3xl bg-white">
+							<div className="desc p-6 bg-white border border-zinc-200 shadow-sm rounded-lg">
 								<h1 className="text-2xl font-semibold text-color-var">
 									How to use Sangkap?
 								</h1>
@@ -237,7 +238,7 @@ const SearchSuggestion = () => {
 									your kitchen inventory.
 								</p>
 							</div>
-							<div className="desc p-6 rounded-3xl bg-white">
+							<div className="desc p-6 bg-white border border-zinc-200 shadow-sm rounded-lg">
 								<h1 className="text-2xl font-semibold text-color-var">
 									Features
 								</h1>

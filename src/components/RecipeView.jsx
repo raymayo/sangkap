@@ -69,7 +69,7 @@ const RecipeView = () => {
 	};
 
 	return (
-		<div className="recipeViewContainer">
+		<div className="recipeViewContainer grid place-items-center h-screen p-8">
 			<nav className="w-full grid justify-center">
 				<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold">
 					<PiBowlFoodFill />
@@ -77,12 +77,12 @@ const RecipeView = () => {
 				</h1>
 			</nav>
 
-			<div className="recipeContainer grid gap-0 mt-8 rounded-3xl grid-cols-1 w-1/2 lg:w-4/6 xl:w-7/12 md:w-5/6 w-5/6 md:grid-cols-1 lg:grid-cols-2">
+			<div className="recipeContainer grid border border-zinc-200 rounded-lg shadow-sm gap-0 mt-8 grid-cols-1 w-full xl:w-4/6 md:grid-cols-1 lg:grid-cols-2">
 				{/* md:bg-red-500 xl:bg-green-500 lg:bg-blue-500 */}
-				<div className="imageContainer rounded-l-3xl" style={style}>
-					<FaArrowLeft onClick={goHome} className="goHome" size={40} />
+				<div className="imageContainer rounded-l-lg" style={style}>
+					<FaArrowLeft onClick={goHome} className="goHome p-2 cursor-pointer" size={40} />
 				</div>
-				<div className="recipeInfo p-6 space-y-2 p-4 flex flex-col lg:space-y-4 xl:space-y-4">
+				<div className="recipeInfo space-y-2 p-4 flex flex-col lg:space-y-4 xl:space-y-4">
 					<h1 className="text-gray-900 text-4xl font-semibold md:text-7xl lg:text-5xl xl:text-5xl sm:w-5/6 lg:w-5/6 xl:w-5/6">
 						{recipeData.title}
 					</h1>
@@ -114,7 +114,7 @@ const RecipeView = () => {
 					))}
 				</ul>
 			</div> */}
-			<div className="instructionBox p-6 rounded-3xl space-y-2 w-3/6 lg:w-4/6 xl:w-7/12 md:w-5/6 w-5/6 my-8">
+			<div className="instructionBox p-6 space-y-2 w-full my-8 border border-zinc-200 rounded-md shadow-sm xl:w-4/6">
 				<h1 className="instructionTitle font-semibold text-4xl pb-2">
 					Instruction
 				</h1>
@@ -125,14 +125,14 @@ const RecipeView = () => {
 				<div className="flex justify-end gap-2">
 					<button
 						onClick={goPrevInstruction}
-						className={`stepsButton ${count === 0 ? 'disabledButton' : ''}`}>
+						className={`stepsButton px-1.5 py-1 rounded-md shadow-sm border border-zinc-200 ${count === 0 ? 'bg-black bg-opacity-10 text-black text-opacity-40' : ''}`}>
 						Previous
 					</button>
 					<button
 						onClick={goNextInstruction}
-						className={`stepsButton ${
+						className={`stepsButton px-1.5 py-1 rounded-md shadow-sm border border-zinc-200 ${
 							count === recipeData.instruction.length - 1
-								? 'disabledButton'
+								? 'bg-black bg-opacity-10 text-black text-opacity-40'
 								: ''
 						}`}>
 						Next
