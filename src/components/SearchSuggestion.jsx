@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppState } from './AppStateContext';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
 import { PiXBold } from 'react-icons/pi';
-import { LuX } from "react-icons/lu";
+import { LuX } from 'react-icons/lu';
 
 const API_INGREDIENTS_URL =
 	'https://raw.githubusercontent.com/raymayo/filipino-recipe-scrapping/main/prototype/prototype_ingredients.json';
@@ -118,21 +118,20 @@ const SearchSuggestion = () => {
 		console.log(displayRecipe);
 	}, [displayRecipe]);
 
-	const deleteItemOnArray = (e) => {
-		let removedItem = e.target.parentElement.textContent.slice(0, -1);
-		const modifiedArray = ingredientArray.filter(
-			(item) => item !== removedItem
+	const deleteItemOnArray = (itemToRemove) => {
+		const updatedArray = ingredientArray.filter(
+			(item) => item !== itemToRemove
 		);
 		setSearchSuggestionState((prev) => ({
 			...prev,
-			ingredientArray: modifiedArray,
+			ingredientArray: updatedArray,
 		}));
 	};
 
 	const displayProto = displayRecipe.map((recipeObj, index) => (
 		<div
 			key={index}
-			className="w-full h-full border cursor-pointer display-card rounded-lg"
+			className="w-full h-full border shadow-2xs cursor-pointer display-card rounded-lg"
 			onClick={() => handleDivClick(recipeObj.title)}>
 			<img
 				src={recipeObj.image}
@@ -160,17 +159,19 @@ const SearchSuggestion = () => {
 		<>
 			<div className="box-section h-screen grid place-items-center px-8">
 				<div className="container rounded flex flex-col items-center box-sectionh-full">
-				<nav className="w-full grid py-4 justify-center">
-					<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold">
-						<PiBowlFoodFill />
-						Sangkap
-					</h1>
-				</nav>
-					<div id="recipeSearchBox" className="rounded py-4 pb-8 w-full xl:w-2/4 lg:w-2/3">
+					<nav className="w-full grid py-4 justify-center">
+						<h1 className="flex text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold">
+							<PiBowlFoodFill />
+							Sangkap
+						</h1>
+					</nav>
+					<div
+						id="recipeSearchBox"
+						className="rounded py-4 pb-8 w-full xl:w-2/4 lg:w-2/3">
 						<div className="searchInput flex gap-1.5 w-full">
 							<input
 								id="recipeSearchInput"
-								className="px-2 py-1 poppin border border-zinc-200 rounded-md shadow-sm w-full"
+								className="px-2 py-1 poppin border border-zinc-200 rounded-md shadow-2xs w-full"
 								type="text"
 								value={userInput}
 								onChange={onIngrType}
@@ -179,19 +180,28 @@ const SearchSuggestion = () => {
 							<button
 								onClick={searchRecipe}
 								className="search-btn px-3 font-medium poppin rounded-md bg-black text-white shadow-sm">
-								<PiMagnifyingGlassBold size={18}/>
+								<PiMagnifyingGlassBold size={18} />
 							</button>
 						</div>
 						<div className="selectedItems poppin text-black flex gap-1 mt-1">
 							{ingredientArray.map((item, index) => (
-								<span className="itemEntered py-1 px-1.5 border border-zinc-200 flex gap-1 w-fit rounded-md shadow-sm" key={index}>
+								<span
+									className="itemEntered py-1 px-1.5 border border-zinc-200 flex gap-1 w-fit rounded-md shadow-sm"
+									key={index}>
 									{item}
-									<button onClick={deleteItemOnArray} className='text-black'><LuX size={16}/></button>
+									<button
+										type="button"
+										onClick={() => deleteItemOnArray(item)}
+										className="text-black">
+										<LuX size={16} />
+									</button>
 								</span>
 							))}
 						</div>
 						{userInput && (
-							<div className="suggestionBox poppin flex flex-col max-h-40 overflow-scroll rounded-md border border-zinc-200 mt-2">
+							<div
+								id="scroll-container"
+								className=" suggestionBox poppin flex flex-col max-h-40 rounded-md border border-zinc-200 mt-2">
 								{filteredIngr.map((suggestion, index) => (
 									<span
 										key={index}
