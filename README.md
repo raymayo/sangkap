@@ -6,14 +6,13 @@ Sangkap is a web app that helps you discover delightful Filipino recipes by gene
 
 ## Installation
 
-Sangkap doesn't require any installation. Simply visit the website at [raymayo.github.io/recipe-app/](https://raymayo.github.io/recipe-app/) to start using it.
+Sangkap doesn't require any installation. Simply visit the website at [raymayo.github.io/sangkap/](https://raymayo.github.io/sangkap/) to start using it.
 
 ## Usage
 
-1. Open your web browser and navigate to [raymayo.github.io/recipe-app/](https://raymayo.github.io/recipe-app/).
+1. Open your web browser and navigate to [raymayo.github.io/sangkap/](https://raymayo.github.io/sangkap/).
 2. Find Filipino recipes effortlessly by typing your available ingredients into Sangkap's search bar.
 3. Let Sangkap generate personalized recommendations tailored to your kitchen inventory.
-
 
 ## Technologies Used
 
